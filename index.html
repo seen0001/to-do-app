@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo App</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+    <main>
+        <section class="container">
+            <h1>To Do List</h1>
+            <p id="dato"></p>
+
+            <!-- Input-sektionen hvor brugeren kan tilføje nye opgaver -->
+            <article class="input-section">
+                <input type="text" id="taskInput" placeholder="Add task">
+                <!-- Inputfelt til opgavebeskrivelsen -->
+                <input type="number" id="quantityInput" placeholder="Quantity">
+                <!-- Inputfelt til antal hvis opgaven er et indkøb -->
+                <button id="addTaskBtn" onclick="addTask()">Add</button>
+            </article>
+
+            <hr>
+
+            <!-- Lister til opgaver -->
+            <article class="opgaver">
+                <div>
+                    <h2>To do</h2>
+                    <ul id="todoList"></ul>
+                </div>
+                <div>
+                    <h2>Done</h2>
+                    <ul id="doneList"></ul>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>Sebastian's To-do App</p>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        // Opret et nyt Date objekt
+        const dagensDato = new Date();
+
+        // Ugedage på dansk
+        const ugedage = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+        // Hent dagens navn
+        const dagensNavn = ugedage[dagensDato.getDay()]; // getDay() returnerer ugedag (0 = Søndag, 1 = Mandag osv.)
+
+        // Hent dag, måned og år
+        const dag = dagensDato.getDate(); // Dagen på måneden (1-31)
+        const måned = dagensDato.getMonth() + 1; // Måneden (0-11), derfor +1 for korrekt måned (1-12)
+        const år = dagensDato.getFullYear(); // Det fulde årstal (f.eks. 2024)
+
+        // Formater datoen som "DagensNavn, dd/mm/yyyy"
+        const formateretDato = dagensNavn + " " + dag + "." + måned + "." + år;
+
+        // Vis datoen i HTML-elementet med id "dato"
+        document.getElementById("dato").textContent = formateretDato;
+    </script>
+</body>
+
+</html>
